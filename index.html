@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kill All Bugs - Learn Testing in 1 Day!</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Learn software testing in just one day — practical, no-fluff guide. Get your copy now." />
+  
+  <!-- Open Graph tags -->
+  <meta property="og:title" content="Learn Software Testing in 1 Day">
+  <meta property="og:description" content="The fastest way to learn software testing. Practical examples and real-world scenarios.">
+  <meta property="og:image" content="https://ctssacademy.com/assets/cover-og.jpg">
+  <meta property="og:url" content="https://ctssacademy.com/learn-software-testing">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@ctssacademy">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050505;
+      --card: rgba(255,255,255,0.04);
+      --accent: #00bf63;
+      --accent-hover: #1ee17f;
+      --accent-dark: #008c4a;
+      --muted: #cfcfcf;
+      --glass: rgba(255,255,255,0.03);
+      --container: 1100px;
+      --shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(180deg, var(--bg), #000);
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+    .wrap {
+      width: 100%;
+      max-width: var(--container);
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.02);
+      margin-bottom: 28px;
+      position: relative;
+      overflow: visible;
+    }
+    .cover-wrap {
+      flex: 0 0 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover {
+      width: 200px;
+      position: relative;
+      z-index: 2;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      transform-style: preserve-3d;
+      animation: coverPulse 5s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+    .cover:hover {
+      transform: rotateY(10deg) scale(1.05);
+    }
+
+ @keyframes breathe {
+  0%, 100% { color: #00bf63; }
+  50% { color: #ffffff; }
+}
+
+    @keyframes coverPulse {
+      0%,100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+      50% { transform: scale(1.07); box-shadow: 0 15px 40px rgba(0,191,99,0.12); }
+    }
+
+    .meta {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .title {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 0 0 8px 0;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #00bf63;
+      animation: pulseGlow 3s ease-in-out infinite;
+      text-shadow: 0 0 10px rgba(0,191,99,0.4);
+      position: relative;
+      z-index: 10;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    .sub {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* Price box */
+    .price-wrap {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .price {
+      background: linear-gradient(180deg, rgba(0,191,99,0.06), rgba(0,191,99,0.02));
+      padding: 12px 16px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 170px;
+      border: 1px solid rgba(0,191,99,0.12);
+      color: #fff;
+    }
+    .price .new { font-size: 20px; font-weight: 800; color: #fff; }
+    .price .old { text-decoration: line-through; color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .price .save { color: var(--accent); font-weight: 700; font-size: 12px; margin-top: 6px; }
+
+    .buy-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-left: auto;
+    }
+    .btn {
+      background: var(--accent);
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 18px rgba(0,191,99,0.12);
+      z-index: 50;
+      position: relative;
+      animation: pulseRed 3s ease-in-out infinite;
+      transition: all 0.2s ease;
+    }
+    .btn:hover { 
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,191,99,0.3);
+    }
+    @keyframes pulseRed {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* Content area */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 { margin: 0 0 12px 0; font-size: 20px; color:#00bf63}
+    p.lead { color: var(--muted); margin: 0 0 14px 0; }
+
+    /* contents list */
+    .toc { list-style: none; padding: 0; margin: 0; }
+    .toc li { padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,0.03); display: flex; gap: 12px; align-items: center; }
+    .toc li:last-child { border-bottom: none }
+    .badge { background: rgba(255,255,255,0.03); padding: 6px 10px; border-radius: 8px; font-weight: 700; color: var(--muted); min-width: 42px; text-align: center }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.02); padding: 12px 0; cursor: pointer; }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-a { margin-top: 8px; color: var(--muted); display: none; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* small right column details */
+    .right-col .small { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+    .specs { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .spec { background: var(--glass); padding: 10px; border-radius: 8px; font-size: 14px; color: #dbe7ff; }
+
+    /* email form */
+    .email-row { display: flex; gap: 8px; margin-top: 12px; }
+    .email-row input { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04); background: transparent; color: #fff; }
+    .email-row button { padding: 10px 14px; border-radius: 8px; border: none; background: var(--accent); color: #000; cursor: pointer; }
+
+    footer { color: var(--muted); text-align: center; margin-top: 18px; font-size: 13px; }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        padding: 20px;
+      }
+      .cover-wrap {
+        flex: 0 0 auto;
+        margin-bottom: 20px;
+      }
+      .price-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      .buy-actions {
+        margin-left: 0;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .title {
+        font-size: 22px;
+      }
+    }
+
+    /* ACCORDION */
+    .accordion { border-top: 1px solid rgba(255,255,255,0.05); }
+    .acc-item { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .acc-title {
+      padding: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #fff;
+      position: relative;
+      background: transparent;
+      border-radius: 6px;
+    }
+    .acc-title::after {
+      content: '+';
+      position: absolute;
+      right: 16px;
+      color: var(--muted);
+      transition: transform 0.2s ease;
+    }
+    .acc-item.open .acc-title::after {
+      content: '-';
+    }
+    .acc-content {
+      display: none;
+      padding: 8px 12px 12px;
+      color: var(--muted);
+    }
+    .acc-item.open .acc-content {
+      display: block;
+    }
+    .acc-item.open .acc-title {
+      background: rgba(0,191,99,0.12);
+      color: #fff;
+    }
+
+    /* Ants Layer */
+    .ant-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      z-index: 5;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    /* Improved Ant Styles */
+    .bug {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      background-size: contain;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      cursor: pointer;
+      z-index: 2;
+      pointer-events: auto;
+      transition: opacity .3s ease;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    /* Sağa giden karıncalar */
+    @keyframes moveRight {
+      0% { left: -60px; transform: scaleX(1); }
+      100% { left: calc(100% + 60px); transform: scaleX(1); }
+    }
+    
+    /* Sola giden karıncalar */
+    @keyframes moveLeft {
+      0% { left: calc(100% + 60px); transform: scaleX(-1); }
+      100% { left: -60px; transform: scaleX(-1); }
+    }
+    
+    .bug.dead {
+      background-image: url("assets/ant-dead.png");
+      animation: none !important;
+      transform: scaleX(1) rotate(90deg) !important;
+      transition: all 0.5s ease;
+    }
+    
+    .bug.fadeout { opacity: 0; }
+    
+    .cover-fallback {
+      width: 200px;
+      height: 300px;
+      background: linear-gradient(45deg, #0a0a0a, #003318);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      color: #00bf63;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    /* Countdown Timer */
+    .countdown {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 15px 0;
+    }
+    .countdown-box {
+      background: var(--accent-dark);
+      padding: 8px;
+      border-radius: 6px;
+      min-width: 40px;
+      text-align: center;
+    }
+    .countdown-value {
+      font-weight: 800;
+      font-size: 18px;
+    }
+    .countdown-label {
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+    
+    /* Campaign Progress */
+    .campaign-progress {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .progress-container {
+      background: rgba(255,255,255,0.05);
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+    .progress-bar {
+      height: 100%;
+      background: var(--accent);
+      width: 0;
+      transition: width 0.5s ease;
+    }
+    .campaign-text {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .campaign-highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    /* Rating */
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .stars {
+      display: flex;
+      gap: 2px;
+    }
+    .star {
+      color: #FFD700;
+      font-size: 16px;
+    }
+    .rating-value {
+      font-weight: 700;
+    }
+    .rating-count {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+    .testimonial {
+      background: var(--glass);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #000;
+    }
+    .testimonial-name {
+      font-weight: 600;
+    }
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .testimonial-text {
+      font-style: italic;
+      color: var(--muted);
+    }
+    
+    /* Payment Methods */
+    .payment-methods {
+      margin-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 20px;
+    }
+    .payment-title {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .payment-icons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .payment-icon {
+      width: 40px;
+      height: 25px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    
+    /* Cart notification */
+    .cart-notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: #000;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 1000;
+    }
+    .cart-notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    /* Special Offer */
+    .special-offer {
+      background: rgba(0,191,99,0.1);
+      border: 1px dashed var(--accent);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 15px 0;
+      text-align: center;
+    }
+    .offer-text {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .payment-icon {
+  width: 50px;
+  height: auto;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+.payment-icon.soon {
+  opacity: 0.5; /* coming soon için biraz transparan yapabilirsin */
+}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- HERO -->
+    <header class="hero card" role="banner">
+      <!-- Karınca Container -->
+      <div class="ant-container" id="antContainer"></div>
+      
+<div class="cover-wrap">
+  <!-- Kitap kapağı -->
+  <img class="cover" src="assets/cover.jpg" alt="Learn Software Testing in 1 Day kitap kapağı">
+</div>
+
+      <div class="meta">
+        <div class="eyebrow">New Release • LIMITED OFFER </div>
+        <h1 class="title">Learn Software Testing in 1 Day — Kill All Bugs!</h1>
+        <div class="sub">A concise, practical guide to manual & basic automation testing — for juniors and busy pros.</div>
+
+        <!-- Rating -->
+        <div class="rating">
+          <div class="stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+          <span class="rating-value" id="ratingValue">4.7</span>
+          <span class="rating-count">(77 reviews)</span>
+        </div>
+
+        <!-- Fidan Kampanyası -->
+        <div class="campaign-progress">
+          <div class="progress-container">
+            <div class="progress-bar" id="progressBar" style="width: 42%"></div>
+          </div>
+        <div class="campaign-text">
+          <span class="campaign-highlight">274 of 10,000 sales</span> • 
+          When the bar fills, <span class="campaign-highlight">10,000 trees</span> will be donated all at once
+          <br><span style="font-size:12px">(27 trees donated so far)</span>
+</div>
+        </div>
+
+        <!-- Özel Teklif -->
+        <div class="special-offer">
+<div class="offer-text">
+  For the first 2,000 sales only: Get a chance to enter the 
+  <a href="https://ee.linkedin.com/company/ad-parcel" target="_blank" rel="noopener noreferrer" style="font-weight:bold; text-decoration:none;">
+    <span style="color:#00bf63;">Ad</span><span style="color:#ffffff;">Parcel</span>
+  </a> "Premium Parcel" giveaway!
+</div>
+
+        <div class="price-wrap">
+          <div class="price">
+            <div class="new" id="price-new">$9.99</div>
+            <div class="old" id="price-old">$20.99</div>
+            <div class="save" id="price-save">You save $11 (52% off)</div>
+          </div>
+
+          <div class="buy-actions" aria-hidden="false">
+            <a id="buyBtn" class="btn"
+  id="ikasBtn" 
+  href="https://testingin1day.ikas.shop" 
+  target="_blank"
+  style="
+    margin-left: 12px;
+    background-color: #00bf63;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 900;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    line-height: 1.2;
+  "
+  onmouseover="this.style.backgroundColor='#00994d'"
+  onmouseout="this.style.backgroundColor='#00bf63'"
+  aria-label="Buy now via IKAS"
+>
+  <span>Buy now via &#9889 IKAS</span>
+  <span style="font-weight: normal; font-size: 12px; color: #d4f1c4; margin-top: 2px;">we suggest this</span>
+</a>
+  
+
+<a 
+  id="altPaymentBtn"
+  href="#"
+  style="
+    margin-left: 12px;
+    background-color: #00bf63;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 800;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  "
+  onmouseover="this.style.backgroundColor='#333'"
+  onmouseout="this.style.backgroundColor='#444'"
+  aria-label="Alternative Payment Methods"
+>
+  Other Payment Methods
+</a>
+  
+
+  <a 
+    id="downloadPreviewBtn" 
+    href="https://drive.google.com/file/d/1lS79GATnQY3F6mXiTrGxCyNB5cXy_Qku/view?usp=share_link"
+    target="_blank" 
+    style="
+      margin-left: 12px;
+      background-color: #00bf63; 
+      color: white; 
+      border: none; 
+      padding: 15px 20px; 
+      font-size: 14px; 
+      font-weight: 800; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      text-decoration: none; 
+      display: inline-flex; 
+      align-items: center;
+      transition: background-color 0.3s ease;
+    " 
+    onmouseover="this.style.backgroundColor='#00994d'" 
+    onmouseout="this.style.backgroundColor='#00bf63'"
+    aria-label="Download Free Preview"
+  >
+    Download Free Preview
+  </a>
+
+  
+</div>
+        </div>
+
+        
+       <!-- Ödeme yöntemleri akordiyonu (başta gizli) -->
+<div id="paymentAccordion" style="display:none; background:#222; color:#eee; padding: 20px; border-radius:8px; max-width:400px; margin: 12px auto; text-align: center;">
+
+  <h2 style="color:#00bf63; margin-top:0;">Alternative Payment Methods</h2>
+  
+  <div style="margin-bottom:15px; text-align:center;">
+    <img src="assets/wise.png" alt="Wise" style="height:40px; margin-bottom: 8px;">
+    <div>Wise QR Code:</div>
+    <img src="assets/wise-receive.jpeg" alt="Wise QR" style="width:150px; display:block; margin: 10px auto;">
+    <small>Username: @cant172</small><br>
+    <small>wise.com/pay/me/cant172</small>
+  </div>
+
+  <div style="margin-bottom:15px; text-align:center;">
+    <img src="assets/metamask.png" alt="Metamask" style="height:40px; margin-bottom: 8px;">
+    <div>Metamask QR Code:</div>
+    <img src="assets/metamask-receive.jpeg" alt="Metamask QR" style="width:150px; display:block; margin: 10px auto;">
+    <small>Account Number: 0x5c2Ef7FC072fd7cEb7cc9879A8D13c72AedC9100</small>
+  </div>
+
+  <div style="margin-bottom:15px; text-align:center;">
+    <img src="assets/remitly.png" alt="Remitly" style="height:40px; margin-bottom: 8px;">
+    <div>Remitly Account Number:</div>
+    <small>+905397447498 (CAN TUNÇER)</small>
+  </div>
+
+  <p style="font-size:13px; color:#aaa;">
+    After sending payment, please email the receipt to <a href="mailto:info@ct-ss.com" style="color:#00bf63;">info@ct-ss.com</a>. Your book will be sent within 8 hours.<br>
+    For instant access, we recommend purchasing via IKAS.
+  </p>
+</div>
+       
+        
+        
+      </div>
+    </header>
+
+    <!-- MAIN GRID -->
+    <main class="grid">
+      <!-- Left: description + contents -->
+      <section>
+        <article class="card">
+          <h2>Why read this book?</h2>
+          <p class="lead">
+            Tired of long, academic books? This guide is straight to the point — real examples, checklists, templates and quick wins to start testing today.
+          </p>
+
+          <h2 style="margin-top:18px">What you'll get?</h2>
+   <ul style="color: var(--muted); margin: 8px 0 0 20px; list-style: none; padding-left: 0;">
+  <li style="position: relative; padding-left: 1.2em;">
+    <span style="color: #00bf63; position: absolute; left: 0;">•</span>
+    Essential testing principles explained simply
+  </li>
+  <li style="position: relative; padding-left: 1.2em;">
+    <span style="color: #00bf63; position: absolute; left: 0;">•</span>
+    Step-by-step STLC &amp; V-Model with examples
+  </li>
+  <li style="position: relative; padding-left: 1.2em;">
+    <span style="color: #00bf63; position: absolute; left: 0;">•</span>
+    Test plan &amp; test case templates you can reuse
+  </li>
+  <li style="position: relative; padding-left: 1.2em;">
+    <span style="color: #00bf63; position: absolute; left: 0;">•</span>
+    Basic automation intro &amp; best tools to try
+  </li>
+  <li style="position: relative; padding-left: 1.2em;">
+    <span style="color: #00bf63; position: absolute; left: 0;">•</span>
+    Quick checklist for everyday bug hunting
+  </li>
+</ul>
+        </article>
+
+        <!-- Accordion Table of Contents -->
+<article class="card" style="margin-top:18px">
+          <h2>Table of Contents</h2>
+          <div class="accordion">
+
+            <!-- Section 1 -->
+            <div class="acc-item">
+              <div class="acc-title">Section 1 - Introduction</div>
+              <div class="acc-content">
+                <ul>
+                  <li>What is Software Testing? Introduction, Definition, Basics & Types</li>
+                  <li>7 Software Testing Principles: Learn with Examples</li>
+                  <li>What is V Model in Software Testing? Learn with SDLC & STLC Example</li>
+                  <li>STLC - Software Testing Life Cycle Phases & Entry, Exit Criteria</li>
+                  <li>How to Create a Test Plan (with Example)</li>
+                  <li>Manual Testing Tutorial for Beginners: Concepts, Types, Tool</li>
+                  <li>AUTOMATION TESTING Tutorial: What is, Process, Benefits & Tools</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="acc-item">
+              <div class="acc-title">Section 2 - Creating Test</div>
+              <div class="acc-content">
+                <ul>
+                  <li>What is Test Scenario? Template with Examples</li>
+                  <li>How to Write Test Cases: Sample Template with Examples</li>
+                  <li>Software Testing Techniques with Test Case Design Examples</li>
+                  <li>What is Requirements Traceability Matrix (RTM)? Example Template</li>
+                  <li>What is Static Testing? What is a Testing Review?</li>
+                  <li>Test Environment for Software Testing</li>
+                  <li>Test Data Generation: What is, How to, Example, Tools</li>
+                  <li>Defect Management Process in Software Testing (Bug Report Template)</li>
+                  <li>Defect/Bug Life Cycle in Software Testing</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="acc-item">
+              <div class="acc-title">Section 3 - Testing Types</div>
+              <div class="acc-content">
+                <ul>
+                  <li>Types of Software Testing: 100 Examples of Different Testing Types</li>
+                  <li>What is WHITE Box Testing? Techniques, Example, Types & Tools</li>
+                  <li>What is BLACK Box Testing? Techniques, Example & Types</li>
+                  <li>Unit Testing Tutorial: What is, Types, Tools, EXAMPLE</li>
+                  <li>Integration Testing: What is, Types, Top Down & Bottom Up Example</li>
+                  <li>What is System Testing? Types & Definition with Example</li>
+                  <li>What is Regression Testing? Definition, Test Cases (Example)</li>
+                  <li>Sanity Testing Vs Smoke Testing: Introduction & Differences</li>
+                  <li>Performance Testing Tutorial: What is, Types, Metrics & Example</li>
+                  <li>Load Testing Tutorial: What is? How to? (with Examples)</li>
+                  <li>Accessibility Testing Tutorial: What is, Tools & Examples</li>
+                  <li>What is STRESS Testing in Software Testing? Tools, Types, Examples</li>
+                  <li>What is User Acceptance Testing (UAT)? with Examples</li>
+                  <li>Backend Testing Tutorial: What is, Tools & Examples</li>
+                  <li>Protocol Testing Tutorial: L2 & L3</li>
+                  <li>Web Service Testing: A Beginner's Tutorial</li>
+                  <li>API Testing Tutorial: Learn in 10 minutes!</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="acc-item">
+              <div class="acc-title">Section 4 - Agile Testing</div>
+              <div class="acc-content">
+                <ul>
+                  <li>What is Agile Testing? Process, Strategy, Test Plan, Life Cycle Example</li>
+                  <li>Scrum Testing Methodology Tutorial: What is, Process, Artifacts, Sprint</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="acc-item">
+              <div class="acc-title">Section 5 - Testing Different Domains</div>
+              <div class="acc-content">
+                <ul>
+                  <li>Banking Domain Application Testing: Sample Test Cases</li>
+                  <li>eCommerce Testing: How to Test an E-Commerce Website</li>
+                  <li>Testing Insurance Domain Applications with Sample Test Cases</li>
+                  <li>Payment Gateway Testing Tutorial with Example Test Cases</li>
+                  <li>Testing Retail Point Of Sale (POS) Systems: Example Test Cases</li>
+                  <li>Testing Telecom Domain with Sample OSS/BSS Test cases</li>
+                  <li>ETL Testing or Data Warehouse Testing Tutorial</li>
+                  <li>Database(Data) Testing Tutorial with Sample TestCases</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- BONUS -->
+            <div class="acc-item">
+              <div class="acc-title">BONUS</div>
+              <div class="acc-content">
+                <ul>
+                  <li>QA Roadmap</li>
+                  <li>1-Day Software Testing Cheatsheet</li>  
+                  <li>150+ Interview Questions & Answers for 2025</li>
+                  <li>Software Testing MCQ Quiz</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Müşteri Yorumları -->
+        <article class="card" style="margin-top:18px">
+          <h2>What Readers Say</h2>
+          <div class="testimonials">
+            <div class="testimonial">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">A</div>
+                <div>
+                  <div class="testimonial-name">Ahmet Y.</div>
+                  <div class="testimonial-role">Junior Tester</div>
+                </div>
+              </div>
+              <div class="testimonial-text">
+                “I haven’t come across a book this clear and focused on teaching. The interview questions for those preparing for job interviews are like a hidden gem. I definitely recommend it to anyone who wants to learn both theory and practice.”              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">E</div>
+                <div>
+                  <div class="testimonial-name">Elif K.</div>
+                  <div class="testimonial-role">Frontend Developer</div>
+                </div>
+              </div>
+              <div class="testimonial-text">
+                “I needed to learn testing principles to improve my code quality. This book was exactly what I was looking for—I understood everything through practical examples.”
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="margin-top:18px" id="faq">
+          <h2>FAQ</h2>
+          <div class="faq-item">
+  <div class="faq-q">
+    <div>Do you provide a hardcopy of the book?</div>
+    <div class="muted">+</div>
+  </div>
+  <div class="faq-a">
+    No. The book is provided digitally in PDF format.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">
+    <div>Do you accept cash payment?</div>
+    <div class="muted">+</div>
+  </div>
+  <div class="faq-a">
+    No. But there are plenty of payment options available.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">
+    <div>I cannot pay via the listed payment options. What can I do?</div>
+    <div class="muted">+</div>
+  </div>
+  <div class="faq-a">
+    For any alternative payment options, please get in touch with us here.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">
+    <div>What payment methods do you accept?</div>
+    <div class="muted">+</div>
+  </div>
+  <div class="faq-a">
+    Currently, we accept payments via Wise, Metamask USDT, Papara (Remitly), and İkas. Very soon, we will integrate Iyzico virtual POS as well. For now, our primary recommendation is to use the link through İkas, which provides an instant and secure way to receive the book.
+  </div>
+</div>
+          <!-- Diğer SSS'ler... -->
+        </article>
+      </section>
+
+      <!-- Right: purchase box + specs -->
+      <aside class="card right-col" aria-labelledby="purchaseBox">
+        <div id="purchaseBox" style="display:flex;flex-direction:column;gap:12px">
+          <div class="small">Special Launch Offer</div>
+          <div style="font-size:20px;font-weight:800">$9.99 <span style="text-decoration:line-through;color:var(--muted);font-weight:600;margin-left:8px">$20.99</span></div>
+          <div style="color:var(--muted);font-size:13px">You save $11 (52% off) •	Limited time offer. Instant PDF download after payment.</div>
+
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <a class="btn" href="https://testingin1day.ikas.shop" target="_blank" id="buyNowSidebar">
+             
+              Buy Now & Dive into Testing Immediately
+            </a>
+          </div>
+
+          <div class="specs">
+            <div class="spec">Pages: 235</div>
+            <div class="spec">Format: PDF (download)</div>
+            <div class="spec">Language: English</div>
+          </div>
+
+          <!-- Ödeme Yöntemleri -->
+       <div class="payment-methods">
+  <div class="payment-title">PAYMENT METHODS:</div>
+<div class="payment-icons" style="display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap;">
+
+
+  <div style="text-align: center;">
+    <div class="payment-icon">
+      <img src="/assets/ikas.png" alt="İKAS" style="height: 50px;">
+    </div>
+    <div style="font-size: 10px; color: #00bf63; font-weight: bold; margin-top: 2px;">(we suggest)</div>
+  </div>
+
+  <div class="payment-icon" style="text-align: center;">
+    <img src="assets/wise.png" alt="WISE" style="height: 50px;">
+  </div>
+
+  <div class="payment-icon" style="text-align: center;">
+    <img src="assets/metamask.png" alt="METAMASK (USDT)" style="height: 50px;">
+  </div>
+
+  <div class="payment-icon" style="text-align: center;">
+    <img src="/assets/remitly.png" alt="PAPARA (REMITLY)" style="height: 50px;">
+  </div>
+
+
+
+  <div style="text-align: center;">
+    <div class="payment-icon">
+      <img src="/assets/iyzico.png" alt="İYZICO" style="height: 50px;">
+    </div>
+    <div style="font-size: 10px; color: #00bf63; font-weight: bold; margin-top: 2px;">(coming soon)</div>
+  </div>
+
+</div>
+</div>
+
+          <div style="margin-top:12px">
+            <div style="margin-top:12px">
+<div style="font-size:14px; color:#00bf63; margin-bottom:8px; animation: breathe 3s ease-in-out infinite;">
+  Learn Scratch in 1 Day for Kids and our ISTQB Udemy course launching soon!
+</div>
+  <div class="small">Stay Updated</div>
+  <div class="email-row" style="display: flex; gap: 8px; align-items: center;">
+    <input id="emailInput" type="email" placeholder="Your E-mail Address" 
+           style="border: 2px solid #00bf63; padding:8px 12px; border-radius:4px; outline:none; flex:1;" />
+    <button id="notifyBtn" style="padding: 9px 16px; border: none; border-radius: 4px; background-color: #00bf63; color: white; cursor: pointer; font-weight: 600;">
+      Notify me
+    </button>
+  </div>
+  <div id="emailMsg" style="margin-top:8px;color:#b9d4ff;font-size:13px;display:none"></div>
+</div>
+
+        
+      </aside>
+    </main>
+
+  <footer style="text-align:center; padding:20px; font-size:14px; background:#000000;">
+  Made with ❤️ by CTSS Academy· © <span id="currentYear"></span>  
+· ISBN: Pending
+· Payment secured by Iyzico (<span style="color:#00bf63;">coming soon</span>)  
+<br><br>
+<strong>Don't forget to listen to our industry's most popular technology and software education podcast</strong>  
+and follow us on LinkedIn!
+  <br><br>
+  <a href="https://tr.linkedin.com/company/ct-ss" target="_blank" style="margin:0 8px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" width="24" height="24" style="vertical-align:middle;">
+  </a>
+  <a href="https://open.spotify.com/show/0jLBnYYl9r2v9BQrmjVDeU?si=865441831b8746bc" target="_blank" style="margin:0 8px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" width="24" height="24" style="vertical-align:middle;">
+  </a>
+  <a href="https://www.youtube.com/@CTSSAcademy" target="_blank" style="margin:0 8px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" width="30" height="22" style="vertical-align:middle;">
+  </a>
+  <br><br>
+<div style="margin-top:18px;font-size:13px">
+  © 2025 
+  <a href="https://tr.linkedin.com/in/cantuncr" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     style="color:#00bf63; text-decoration:none;">
+     Can TUNÇER
+  </a>. All Rights Reserved.
+</div>
+</footer>
+  </div>
+
+  <!-- Sepet bildirimi -->
+  <div class="cart-notification" id="cartNotification">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 12L11 14L15 10M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>Ödeme bilgileri e-posta ile gönderilecektir! 📩</span>
+  </div>
+
+  <script>
+    // ---------- CONFIG ----------
+    const BUY_LINK = "#";
+    // ----------------------------
+
+    
+    
+    function updateCampaignProgress() {
+      const progressBar = document.getElementById('progressBar');
+      const totalSales = 10000;
+      const initialSales = 273; // 9 Ağustos 2025'teki başlangıç satış
+      const salesPerDay = 75;
+
+      // Kampanya başlangıç tarihi: 9 Ağustos 2025
+      const campaignStartDate = new Date('2025-08-09T00:00:00');
+
+      function calculateCurrentSales() {
+        const now = new Date();
+        const diffTime = now - campaignStartDate;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); // Gün cinsinden fark
+
+        const sales = Math.min(initialSales + (diffDays * salesPerDay), totalSales);
+        return sales;
+      }
+
+      function update() {
+        const currentSales = calculateCurrentSales();
+        const newProgress = (currentSales / totalSales) * 100;
+        const treesDonated = Math.floor(currentSales / 10);
+
+        progressBar.style.width = `${newProgress}%`;
+        document.querySelector('.campaign-text').innerHTML = `
+          <span class="campaign-highlight">${currentSales.toLocaleString()} of 10,000 sales</span> • 
+          When the bar fills, <span class="campaign-highlight">10,000 trees</span> will be donated all at once
+          <br><span style="font-size:12px">(${treesDonated.toLocaleString()} trees donated so far)</span>
+        `;
+      }
+
+      update();
+      setInterval(update, 1000 * 60 * 60); // Her saat güncelle
+    }
+    
+  
+    
+    // Email bildirimi
+    function setupEmailNotifications() {
+      const notifyBtn = document.getElementById('notifyBtn');
+      const emailInput = document.getElementById('emailInput');
+      const emailMsg = document.getElementById('emailMsg');
+      
+      notifyBtn.addEventListener('click', () => {
+        const email = emailInput.value.trim();
+        
+        if (!email || !email.includes('@')) {
+          emailMsg.style.display = 'block';
+          emailMsg.style.color = '#ffb4b4';
+          emailMsg.textContent = 'Please enter a valid email address.';
+          return;
+        }
+        
+        emailMsg.style.display = 'block';
+        emailMsg.style.color = '#b9d4ff';
+        emailMsg.textContent = 'Thank you we will get in touch soon!';
+        emailInput.value = '';
+        
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'generate_lead', {
+            method: 'email_signup'
+          });
+        }
+      });
+    }
+    
+    // Accordion fonksiyonu - DÜZELTİLMİŞ KISIM
+function setupAccordions() {
+    document.querySelectorAll('.acc-title').forEach(title => {
+        title.addEventListener('click', function(e) {
+            e.preventDefault();
+            const accItem = this.closest('.acc-item');
+            if (!accItem) return;
+            
+            accItem.classList.toggle('open');
+            
+            // Diğer açık accordion'ları kapat
+            document.querySelectorAll('.acc-item.open').forEach(item => {
+                if (item !== accItem) item.classList.remove('open');
+            });
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', setupAccordions);
+
+      
+      // FAQ akordiyonu
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          
+          // Diğer tüm FAQ öğelerini kapat
+          if (!isOpen) {
+            document.querySelectorAll('.faq-item').forEach(el => {
+              el.classList.remove('open');
+            });
+          }
+          
+          // Tıklananı aç/kapat
+          item.classList.toggle('open');
+        });
+      });
+    
+    
+    // Yıl güncelleme
+    function updateYear() {
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    }
+    
+    // Sayfa yüklendiğinde çalışacak fonksiyonlar
+    document.addEventListener('DOMContentLoaded', () => {
+      createAnts();
+      updateCampaignProgress();
+      setupPaymentButtons();
+      setupEmailNotifications();
+      setupAccordions(); // Bu satırı ekledik
+      updateYear();
+    });
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+
+      document.getElementById('altPaymentBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  const accordion = document.getElementById('paymentAccordion');
+  if (accordion.style.display === 'none' || accordion.style.display === '') {
+    accordion.style.display = 'block';
+    accordion.scrollIntoView({behavior: 'smooth'});
+  } else {
+    accordion.style.display = 'none';
+  }
+});
+  </script>
+</body>
+</html>
