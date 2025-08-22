@@ -142,17 +142,16 @@
   text-align: center;
 }
 
-/* Küçük ekranlar için alt alta */
-@media (max-width: 480px) {
+    /* Küçük ekranlar için alt alta */
+@media (max-width: 600px) {
   .buy-actions {
     flex-direction: column;
     align-items: stretch;
   }
-  #buyBtn,
-  #altPaymentBtn,
-  #downloadPreviewBtn {
-    flex: none;
+  .btn.primary-btn,
+  .btn.secondary-btn {
     width: 100%;
+    min-width: auto;
   }
 }
 
@@ -161,6 +160,7 @@
       display: flex;
       gap: 20px;
       align-items: center;
+      justify-content: center;
       margin-top: 8px;
       flex-wrap: wrap;
     }
@@ -170,22 +170,26 @@
       border-radius: 8px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      text-align: center;
       min-width: 170px;
       border: 1px solid rgba(0,191,99,0.12);
       color: #fff;
+      margin-left: auto;
+      margin-right: auto;
     }
     .price .new { font-size: 20px; font-weight: 800; color: #fff; }
-    .price .old { text-decoration: line-through; color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .price .old { text-decoration: line-through; color: var(--muted); font-size: 13px; margin-top: 4px; align-self: center; }
     .price .save { color: var(--accent); font-weight: 700; font-size: 12px; margin-top: 6px; }
 
     .buy-actions {
       display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  padding: 0 10px; /* Kenarlardan biraz boşluk */
-  box-sizing: border-box;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: stretch;
+      padding: 0;
+      box-sizing: border-box;
     }
     .btn {
       background: var(--accent);
@@ -219,6 +223,119 @@
       border: 1px solid rgba(255,255,255,0.06);
       color: var(--muted);
       font-weight: 600;
+    }
+    
+    /* Yeni buton stilleri */
+    .btn.primary-btn {
+      background: var(--accent);
+      color: #ffffff;
+      padding: 15px 20px;
+      font-size: 14px;
+      font-weight: 800;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: all 0.3s ease;
+      line-height: 1.2;
+      box-shadow: 0 6px 18px rgba(0,191,99,0.12);
+      min-width: 180px;
+    }
+    
+    .btn.primary-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,191,99,0.3);
+    }
+    
+    .btn.primary-btn .btn-subtitle {
+      font-weight: normal;
+      font-size: 12px;
+      color: #d4f1c4;
+      margin-top: 2px;
+    }
+    
+    .btn.secondary-btn {
+      background: rgba(255,255,255,0.05);
+      color: #ffffff;
+      padding: 15px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      min-width: 160px;
+    }
+    
+    .btn.secondary-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+    
+    /* Buton düzeni iyileştirmeleri */
+    .buy-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: stretch;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Mobil responsive */
+    @media (max-width: 600px) {
+      /* Üst buton tam satır, alttaki iki buton yan yana */
+      .buy-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        align-items: stretch;
+      }
+      #buyBtn { grid-column: 1 / -1; }
+      #altPaymentBtn, #downloadPreviewBtn { grid-column: auto; }
+
+      .btn.primary-btn,
+      .btn.secondary-btn {
+        width: 100%;
+        min-width: auto;
+        padding: 10px 12px;
+        font-size: 12px;
+        box-shadow: 0 3px 10px rgba(0,191,99,0.12);
+      }
+      .btn.primary-btn {
+        flex-direction: row;
+      }
+      .btn.primary-btn .btn-subtitle {
+        display: none;
+      }
+    }
+    
+    /* Çok küçük ekranlar için daha kompakt butonlar */
+    @media (max-width: 480px) {
+      .buy-actions { gap: 8px; }
+      .btn.primary-btn,
+      .btn.secondary-btn {
+        padding: 10px 12px;
+        font-size: 12px;
+      }
+      .btn.primary-btn {
+        flex-direction: row;
+      }
+      .btn.primary-btn .btn-subtitle {
+        display: none;
+      }
     }
 
     /* Content area */
@@ -267,6 +384,12 @@
     .email-row button { padding: 10px 14px; border-radius: 8px; border: none; background: var(--accent); color: #000; cursor: pointer; }
 
     footer { color: var(--muted); text-align: center; margin-top: 18px; font-size: 13px; }
+    .footer-lines { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .footer-line { white-space: nowrap; }
+    @media (max-width: 600px) {
+      .footer-lines { flex-direction: column; gap: 6px; align-items: center; }
+      .footer-line { display: block; white-space: normal; }
+    }
 
     /* responsive */
     @media (max-width: 900px) {
@@ -332,6 +455,16 @@
       color: #fff;
     }
 
+    /* Accordion list bullets */
+    .acc-content ul {
+      list-style: disc;
+      margin-left: 20px;
+      padding-left: 18px;
+    }
+    .acc-content li::marker {
+      color: var(--accent);
+    }
+
     /* Ants Layer */
    
     .cover-fallback {
@@ -356,20 +489,65 @@
       justify-content: center;
       margin: 15px 0;
     }
+    .countdown.inline {
+      margin: 0;
+      gap: 8px;
+      padding: 6px 10px;
+      background: rgba(0,191,99,0.10);
+      border: 1px solid rgba(0,191,99,0.35);
+      border-radius: 999px;
+      box-shadow: 0 0 12px rgba(0,191,99,0.25);
+      align-items: center;
+      animation: glowPulse 2.6s ease-in-out infinite;
+    }
     .countdown-box {
-      background: var(--accent-dark);
-      padding: 8px;
-      border-radius: 6px;
-      min-width: 40px;
+      background: rgba(0,191,99,0.18);
+      padding: 8px 10px;
+      border-radius: 8px;
+      min-width: 42px;
       text-align: center;
+      border: 1px solid rgba(0,191,99,0.35);
+    }
+    .countdown.inline .countdown-box {
+      min-width: auto;
     }
     .countdown-value {
       font-weight: 800;
       font-size: 18px;
+      line-height: 1;
+    }
+    @keyframes glowPulse {
+      0%,100% { box-shadow: 0 0 8px rgba(0,191,99,0.2); }
+      50% { box-shadow: 0 0 16px rgba(0,191,99,0.45); }
     }
     .countdown-label {
       font-size: 10px;
       text-transform: uppercase;
+    }
+    
+    .countdown-labeltext {
+      color: #ffd740; /* sarı vurgu */
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+      animation: pulseYellow 2.2s ease-in-out infinite;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .countdown-icon {
+      display: inline-block;
+      animation: rotateClock 2.5s linear infinite;
+      filter: drop-shadow(0 0 6px rgba(255,215,64,0.5));
+    }
+    
+    @keyframes pulseYellow {
+      0%,100% { opacity: 1; text-shadow: 0 0 0 rgba(255,215,64,0); }
+      50% { opacity: 0.95; text-shadow: 0 0 10px rgba(255,215,64,0.7); }
+    }
+    @keyframes rotateClock {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
     
     /* Campaign Progress */
@@ -531,16 +709,14 @@
       font-weight: 600;
     }
 
+    /* Ödeme ikonları (tek tanım) */
     .payment-icon {
-  width: 50px;
-  height: auto;
-  margin: 0 10px;
-  vertical-align: middle;
-}
-
-.payment-icon.soon {
-  opacity: 0.5; /* coming soon için biraz transparan yapabilirsin */
-}
+      width: 50px;
+      height: auto;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+    .payment-icon.soon { opacity: 0.5; }
   </style>
 </head>
 <body>
@@ -572,7 +748,7 @@
           <span class="rating-value" id="ratingValue">4.7</span>
           <span class="rating-count">(77 reviews)</span>
         </div>
-<z
+
         <!-- Fidan Kampanyası -->
         <div class="campaign-progress">
           <div class="progress-container">
@@ -587,105 +763,66 @@
 
         <!-- Özel Teklif -->
         <div class="special-offer">
-<div class="offer-text">
-  For the first 2,000 sales only: Get a chance to enter the 
-  <a href="https://ee.linkedin.com/company/ad-parcel" target="_blank" rel="noopener noreferrer" style="font-weight:bold; text-decoration:none;">
-    <span style="color:#00bf63;">Ad</span><span style="color:#ffffff;">Parcel</span>
-  </a> "Premium Parcel" giveaway!
-</div>
-
-        <div class="price-wrap">
-          <div class="price">
-            <div class="new" id="price-new">$9.99</div>
-            <div class="old" id="price-old">$20.99</div>
-            <div class="save" id="price-save">You save $11 (52% off)</div>
+          <div class="offer-text">
+            For the first 2,000 sales only: Get a chance to enter the 
+            <a href="https://ee.linkedin.com/company/ad-parcel" target="_blank" rel="noopener noreferrer" style="font-weight:bold; text-decoration:none;">
+              <span style="color:#00bf63;">Ad</span><span style="color:#ffffff;">Parcel</span>
+            </a> "Premium Parcel" giveaway!
           </div>
 
-          <div class="buy-actions" aria-hidden="false">
-            <a id="buyBtn" class="btn"
-  id="ikasBtn" 
-  href="https://testingin1day.ikas.shop" 
-  target="_blank"
-  style="
-    margin-left: 12px;
-    background-color: #00bf63;
-    color: white;
-    border: none;
-    padding: 15px 20px;
-    font-size: 14px;
-    font-weight: 900;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    line-height: 1.2;
-  "
-  onmouseover="this.style.backgroundColor='#00994d'"
-  onmouseout="this.style.backgroundColor='#00bf63'"
-  aria-label="Buy now via IKAS"
->
-  <span>Buy now via &#9889 IKAS</span>
-  <span style="font-weight: normal; font-size: 12px; color: #d4f1c4; margin-top: 2px;">we suggest this</span>
-</a>
-  
+          <div class="price-wrap">
+            <div class="price">
+              <div style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap">
+                <div class="new" id="price-new">$9.99</div>
+                <span class="countdown-labeltext"><span class="countdown-icon" aria-hidden="true">⏳</span> Offer ends in:</span>
+                <div class="countdown inline" id="offerCountdown" aria-live="polite" style="margin:0">
+                  <div class="countdown-box">
+                    <div class="countdown-value" id="offerH">00</div>
+                    <div class="countdown-label">H</div>
+                  </div>
+                  <div class="countdown-box">
+                    <div class="countdown-value" id="offerM">00</div>
+                    <div class="countdown-label">M</div>
+                  </div>
+                  <div class="countdown-box">
+                    <div class="countdown-value" id="offerS">00</div>
+                    <div class="countdown-label">S</div>
+                  </div>
+                </div>
+              </div>
+              <div class="old" id="price-old">$20.99</div>
+              <div class="save" id="price-save">You save $11 (52% off)</div>
+            </div>
 
-<a 
-  id="altPaymentBtn"
-  href="#"
-  style="
-    margin-left: 12px;
-    background-color: #00bf63;
-    color: white;
-    border: none;
-    padding: 15px 20px;
-    font-size: 14px;
-    font-weight: 800;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    transition: background-color 0.3s ease;
-  "
-  onmouseover="this.style.backgroundColor='#333'"
-  onmouseout="this.style.backgroundColor='#444'"
-  aria-label="Alternative Payment Methods"
->
-  Other Payment Methods
-</a>
-  
-
-  <a 
-    id="downloadPreviewBtn" 
-    href="https://drive.google.com/file/d/1lS79GATnQY3F6mXiTrGxCyNB5cXy_Qku/view?usp=share_link"
-    target="_blank" 
-    style="
-      margin-left: 12px;
-      background-color: #00bf63; 
-      color: white; 
-      border: none; 
-      padding: 15px 20px; 
-      font-size: 14px; 
-      font-weight: 800; 
-      border-radius: 6px; 
-      cursor: pointer; 
-      text-decoration: none; 
-      display: inline-flex; 
-      align-items: center;
-      transition: background-color 0.3s ease;
-    " 
-    onmouseover="this.style.backgroundColor='#00994d'" 
-    onmouseout="this.style.backgroundColor='#00bf63'"
-    aria-label="Download Free Preview"
-  >
-    Download Free Preview
-  </a>
-
-  
-</div>
+            <div class="buy-actions" aria-hidden="false">
+              <!-- Ana Satın Alma Butonu -->
+              <a id="buyBtn" class="btn primary-btn"
+                href="https://testingin1day.ikas.shop" 
+                target="_blank"
+                aria-label="Buy now via IKAS"
+              >
+                <span>Buy now via ⚡ IKAS</span>
+                <span class="btn-subtitle">we suggest this</span>
+              </a>
+              
+              <!-- Alternatif Ödeme Butonu -->
+              <a id="altPaymentBtn" class="btn secondary-btn"
+                href="#"
+                aria-label="Alternative Payment Methods"
+              >
+                Other Payment Methods
+              </a>
+              
+              <!-- Önizleme İndirme Butonu -->
+              <a id="downloadPreviewBtn" class="btn secondary-btn"
+                href="https://drive.google.com/file/d/1lS79GATnQY3F6mXiTrGxCyNB5cXy_Qku/view?usp=share_link"
+                target="_blank" 
+                aria-label="Download Free Preview"
+              >
+                Download Free Preview
+              </a>
+            </div>
+          </div>
         </div>
 
         
@@ -914,21 +1051,11 @@
 
 <div class="faq-item">
   <div class="faq-q">
-    <div>Do you accept cash payment?</div>
-    <div class="muted">+</div>
-  </div>
-  <div class="faq-a">
-    No. But there are plenty of payment options available.
-  </div>
-</div>
-
-<div class="faq-item">
-  <div class="faq-q">
     <div>I cannot pay via the listed payment options. What can I do?</div>
     <div class="muted">+</div>
   </div>
   <div class="faq-a">
-    For any alternative payment options, please get in touch with us here.
+    For any alternative payment options, please get in touch with us <a href="mailto:info@ct-ss.com" style="color:#00bf63; text-decoration:none;">here</a>.
   </div>
 </div>
 
@@ -1023,12 +1150,15 @@
     </main>
 
   <footer style="text-align:center; padding:20px; font-size:14px; background:#000000;">
-  Made with ❤️ by CTSS Academy· © <span id="currentYear"></span>  
-· ISBN: Pending
-· Payment secured by Iyzico (<span style="color:#00bf63;">coming soon</span>)  
-<br><br>
-<strong>Don't forget to listen to our industry's most popular technology and software education podcast</strong>  
-and follow us on LinkedIn!
+  <div class="footer-lines">
+    <span class="footer-line">Made with ❤️ by CTSS Academy</span>
+    <span class="footer-line">© <span id="currentYear"></span></span>
+    <span class="footer-line">ISBN: 978-625-00-3271-8</span>
+    <span class="footer-line">Payment secured by Iyzico (<span style="color:#00bf63;">coming soon</span>)</span>
+  </div>
+  <br><br>
+  <strong>Don't forget to listen to our industry's most popular technology and software education podcast</strong>  
+  and follow us on LinkedIn!
   <br><br>
   <a href="https://tr.linkedin.com/company/ct-ss" target="_blank" style="margin:0 8px;">
     <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" width="24" height="24" style="vertical-align:middle;">
@@ -1040,15 +1170,15 @@ and follow us on LinkedIn!
     <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" width="30" height="22" style="vertical-align:middle;">
   </a>
   <br><br>
-<div style="margin-top:18px;font-size:13px">
-  © 2025 
-  <a href="https://tr.linkedin.com/in/cantuncr" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     style="color:#00bf63; text-decoration:none;">
-     Can TUNÇER
-  </a>. All Rights Reserved.
-</div>
+  <div style="margin-top:18px;font-size:13px">
+    © 2025 
+    <a href="https://tr.linkedin.com/in/cantuncr" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       style="color:#00bf63; text-decoration:none;">
+       Can TUNÇER
+    </a>. All Rights Reserved.
+  </div>
 </footer>
   </div>
 
@@ -1070,11 +1200,11 @@ and follow us on LinkedIn!
     function updateCampaignProgress() {
       const progressBar = document.getElementById('progressBar');
       const totalSales = 10000;
-      const initialSales = 273; // 9 Ağustos 2025'teki başlangıç satış
-      const salesPerDay = 75;
+      const initialSales = 274; // Başlangıç satış (anchor)
+      const salesPerDay = 20;   // Günlük artış
 
-      // Kampanya başlangıç tarihi: 9 Ağustos 2025
-      const campaignStartDate = new Date('2025-08-09T00:00:00');
+      // Kampanya başlangıç tarihi (anchor): 22 Ağustos 2025 00:00
+      const campaignStartDate = new Date('2025-08-22T00:00:00');
 
       function calculateCurrentSales() {
         const now = new Date();
@@ -1085,17 +1215,32 @@ and follow us on LinkedIn!
         return sales;
       }
 
-      function update() {
+              function update() {
         const currentSales = calculateCurrentSales();
         const newProgress = (currentSales / totalSales) * 100;
         const treesDonated = Math.floor(currentSales / 10);
 
+        // Bar genişliği
         progressBar.style.width = `${newProgress}%`;
-        document.querySelector('.campaign-text').innerHTML = `
-          <span class="campaign-highlight">${currentSales.toLocaleString()} of 10,000 sales</span> • 
+
+        // Rakam animasyonu (flip)
+        const textEl = document.querySelector('.campaign-text');
+        const numberHtml = `<span class="campaign-highlight flip-number">${currentSales.toLocaleString()}</span>`;
+        textEl.innerHTML = `
+          ${numberHtml} of 10,000 sales • 
           When the bar fills, <span class="campaign-highlight">10,000 trees</span> will be donated all at once
           <br><span style="font-size:12px">(${treesDonated.toLocaleString()} trees donated so far)</span>
         `;
+        const flipEl = textEl.querySelector('.flip-number');
+        if (flipEl) {
+          flipEl.style.display = 'inline-block';
+          flipEl.style.transformOrigin = '50% 50%';
+          flipEl.animate([
+            { transform: 'rotateX(0deg)', filter: 'brightness(1)' },
+            { transform: 'rotateX(-90deg)', filter: 'brightness(0.8)' },
+            { transform: 'rotateX(0deg)', filter: 'brightness(1)' }
+          ], { duration: 500, easing: 'ease-out' });
+        }
       }
 
       update();
@@ -1103,6 +1248,40 @@ and follow us on LinkedIn!
     }
     
   
+    
+    // Özel teklif geri sayımı (20 dk - 1.5 saat arası)
+    function setupOfferCountdown() {
+      const h = document.getElementById('offerH');
+      const m = document.getElementById('offerM');
+      const s = document.getElementById('offerS');
+      if (!h || !m || !s) return;
+
+      function randomSeconds() {
+        const min = 20 * 60;       // 20 dakika
+        const max = 90 * 60;       // 1.5 saat
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      let remaining = randomSeconds();
+
+      function tick() {
+        const hours = Math.floor(remaining / 3600);
+        const minutes = Math.floor((remaining % 3600) / 60);
+        const seconds = remaining % 60;
+        h.textContent = String(hours).padStart(2, '0');
+        m.textContent = String(minutes).padStart(2, '0');
+        s.textContent = String(seconds).padStart(2, '0');
+
+        if (remaining <= 0) {
+          remaining = randomSeconds();
+        } else {
+          remaining -= 1;
+        }
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    }
     
     // Email bildirimi
     function setupEmailNotifications() {
@@ -1133,28 +1312,28 @@ and follow us on LinkedIn!
       });
     }
     
-    // Accordion fonksiyonu - DÜZELTİLMİŞ KISIM
+    // Accordion fonksiyonu - Event Delegation ile daha sağlam
 function setupAccordions() {
-    document.querySelectorAll('.acc-title').forEach(title => {
-        title.addEventListener('click', function(e) {
-            e.preventDefault();
-            const accItem = this.closest('.acc-item');
-            if (!accItem) return;
-            
-            accItem.classList.toggle('open');
-            
-            // Diğer açık accordion'ları kapat
-            document.querySelectorAll('.acc-item.open').forEach(item => {
-                if (item !== accItem) item.classList.remove('open');
-            });
-        });
+  document.querySelectorAll('.accordion').forEach(accordion => {
+    accordion.addEventListener('click', (e) => {
+      const title = e.target.closest('.acc-title');
+      if (!title || !accordion.contains(title)) return;
+      e.preventDefault();
+      const accItem = title.closest('.acc-item');
+      if (!accItem) return;
+
+      const willOpen = !accItem.classList.contains('open');
+      // Önce tümünü kapat
+      accordion.querySelectorAll('.acc-item.open').forEach(openItem => {
+        openItem.classList.remove('open');
+      });
+      // Sonra tıklananı durumuna göre aç
+      if (willOpen) accItem.classList.add('open');
     });
+  });
 }
 
-document.addEventListener('DOMContentLoaded', setupAccordions);
-
-      
-      // FAQ akordiyonu
+// setupAccordions zaten DOMContentLoaded içinde çağrılıyor
       document.querySelectorAll('.faq-item').forEach(item => {
         item.addEventListener('click', () => {
           const isOpen = item.classList.contains('open');
@@ -1172,6 +1351,12 @@ document.addEventListener('DOMContentLoaded', setupAccordions);
       });
     
     
+    // Boş fonksiyon: karınca animasyonu (şu an kullanılmıyor, hata önlemek için)
+    function createAnts() {}
+    
+    // Boş fonksiyon: ödeme butonları (şu an kullanılmıyor, hata önlemek için)
+    function setupPaymentButtons() {}
+    
     // Yıl güncelleme
     function updateYear() {
       document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -1185,6 +1370,7 @@ document.addEventListener('DOMContentLoaded', setupAccordions);
       setupEmailNotifications();
       setupAccordions(); // Bu satırı ekledik
       updateYear();
+      setupOfferCountdown();
     });
       document.getElementById("currentYear").textContent = new Date().getFullYear();
 
@@ -1192,11 +1378,19 @@ document.addEventListener('DOMContentLoaded', setupAccordions);
       document.getElementById('altPaymentBtn').addEventListener('click', function(e) {
   e.preventDefault();
   const accordion = document.getElementById('paymentAccordion');
+  const button = this;
+  
   if (accordion.style.display === 'none' || accordion.style.display === '') {
     accordion.style.display = 'block';
     accordion.scrollIntoView({behavior: 'smooth'});
+    // Buton rengini aktif duruma getir
+    button.style.background = 'var(--accent)';
+    button.style.color = '#ffffff';
   } else {
     accordion.style.display = 'none';
+    // Buton rengini normal duruma getir
+    button.style.background = 'rgba(255,255,255,0.05)';
+    button.style.color = '#ffffff';
   }
 });
   </script>
