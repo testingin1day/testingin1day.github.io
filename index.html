@@ -19,6 +19,7 @@
   <meta name="twitter:creator" content="@ctssacademy">
   
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/cover.jpg" imagesrcset="assets/cover.jpg 1x" fetchpriority="high">
 
   <style>
     :root {
@@ -740,7 +741,7 @@
       
 <div class="cover-wrap">
   <!-- Kitap kapağı -->
-  <img class="cover" src="assets/cover.jpg" alt="Learn Software Testing in 1 Day kitap kapağı">
+  <img class="cover" src="assets/cover.jpg" alt="Learn Software Testing in 1 Day kitap kapağı" width="200" height="300" decoding="async" fetchpriority="high">
 </div>
 
       <div class="meta">
@@ -846,7 +847,6 @@
               <!-- Önizleme İndirme Butonu -->
               <a id="downloadPreviewBtn" class="btn secondary-btn"
                 href="https://drive.google.com/file/d/1lS79GATnQY3F6mXiTrGxCyNB5cXy_Qku/view?usp=share_link"
-                target="_blank" 
                 aria-label="Download Free Preview"
               >
                 Download Free Preview
@@ -862,25 +862,21 @@
   <h2 style="color:#00bf63; margin-top:0;">Alternative Payment Methods</h2>
   
   <div style="margin-bottom:15px; text-align:center;">
-    <img src="assets/wise.png" alt="Wise" style="height:40px; margin-bottom: 8px;">
+    <img src="assets/wise.png" alt="Wise" style="height:40px; margin-bottom: 8px;" loading="lazy">
     <div>Wise QR Code:</div>
-    <img src="assets/wise-receive.jpeg" alt="Wise QR" style="width:150px; display:block; margin: 10px auto;">
+    <img src="assets/wise-receive.jpeg" alt="Wise QR" style="width:150px; display:block; margin: 10px auto;" loading="lazy">
     <small>Username: @cant172</small><br>
     <small>wise.com/pay/me/cant172</small>
   </div>
 
   <div style="margin-bottom:15px; text-align:center;">
-    <img src="assets/metamask.png" alt="Metamask" style="height:40px; margin-bottom: 8px;">
+    <img src="assets/metamask.png" alt="Metamask" style="height:40px; margin-bottom: 8px;" loading="lazy">
     <div>Metamask QR Code:</div>
-    <img src="assets/metamask-receive.jpeg" alt="Metamask QR" style="width:150px; display:block; margin: 10px auto;">
+    <img src="assets/metamask-receive.jpeg" alt="Metamask QR" style="width:150px; display:block; margin: 10px auto;" loading="lazy">
     <small>Account Number: 0x5c2Ef7FC072fd7cEb7cc9879A8D13c72AedC9100</small>
   </div>
 
-  <div style="margin-bottom:15px; text-align:center;">
-    <img src="assets/remitly.png" alt="Remitly" style="height:40px; margin-bottom: 8px;">
-    <div>Remitly Account Number:</div>
-    <small>+905397447498 (CAN TUNÇER)</small>
-  </div>
+  
 
   <p style="font-size:13px; color:#aaa;">
     After sending payment, please email the receipt to <a href="mailto:info@ct-ss.com" style="color:#00bf63;">info@ct-ss.com</a>. Your book will be sent within 8 hours.<br>
@@ -1218,29 +1214,27 @@
 
   <div style="text-align: center;">
     <div class="payment-icon">
-      <img src="/assets/ikas.png" alt="İKAS" style="height: 50px;">
+      <img src="/assets/ikas.png" alt="İKAS" style="height: 50px;" loading="lazy">
     </div>
     <div style="font-size: 10px; color: #00bf63; font-weight: bold; margin-top: 2px;">(we suggest)</div>
   </div>
 
   <div style="text-align: center;">
     <div class="payment-icon">
-      <img src="/assets/shopier.png" alt="Shopier" style="height: 50px;">
+      <img src="/assets/shopier.png" alt="Shopier" style="height: 50px;" loading="lazy">
     </div>
     <div style="font-size: 10px; color: #00bf63; font-weight: bold; margin-top: 2px;">(we suggest)</div>
   </div>
 
   <div class="payment-icon" style="text-align: center;">
-    <img src="assets/wise.png" alt="WISE" style="height: 50px;">
+    <img src="assets/wise.png" alt="WISE" style="height: 50px;" loading="lazy">
   </div>
 
   <div class="payment-icon" style="text-align: center;">
-    <img src="assets/metamask.png" alt="METAMASK (USDT)" style="height: 50px;">
+    <img src="assets/metamask.png" alt="METAMASK (USDT)" style="height: 50px;" loading="lazy">
   </div>
 
-  <div class="payment-icon" style="text-align: center;">
-    <img src="/assets/remitly.png" alt="PAPARA (REMITLY)" style="height: 50px;">
-  </div>
+  
 
 </div>
 </div>
@@ -1281,13 +1275,13 @@
   and follow us on LinkedIn!
   <br><br>
   <a href="https://tr.linkedin.com/company/ct-ss" target="_blank" style="margin:0 8px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" width="24" height="24" style="vertical-align:middle;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" width="24" height="24" style="vertical-align:middle;" loading="lazy">
   </a>
   <a href="https://open.spotify.com/show/0jLBnYYl9r2v9BQrmjVDeU?si=865441831b8746bc" target="_blank" style="margin:0 8px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" width="24" height="24" style="vertical-align:middle;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" width="24" height="24" style="vertical-align:middle;" loading="lazy">
   </a>
   <a href="https://www.youtube.com/@CTSSAcademy" target="_blank" style="margin:0 8px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" width="30" height="22" style="vertical-align:middle;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" width="30" height="22" style="vertical-align:middle;" loading="lazy">
   </a>
   <br><br>
   <div style="margin-top:18px;font-size:13px">
@@ -1682,6 +1676,16 @@ function setupAccordions() {
             <div style="margin-top:10px; font-size:12px; color:#aaa;">Limited availability • Expires soon</div>
           </div>
         `);
+      });
+    }
+    
+    // ---- Download preview modalize ----
+    const downloadPreviewBtn = document.getElementById('downloadPreviewBtn');
+    if (downloadPreviewBtn) {
+      downloadPreviewBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const url = this.getAttribute('href');
+        openModalWithIframe('Free Preview', url);
       });
     }
   </script>
