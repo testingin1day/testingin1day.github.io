@@ -283,6 +283,11 @@
       transform: translateY(-2px);
     }
     
+    /* Satın alma alanı satır kırıcı ve düzen */
+    .btn-break { flex-basis: 100%; height: 0; }
+    .buy-actions .btn.primary-btn { flex: 1 1 240px; min-width: 220px; }
+    .buy-actions .btn.secondary-btn { flex: 1 1 100%; }
+    
     /* Buton düzeni iyileştirmeleri */
     .buy-actions {
       display: flex;
@@ -296,30 +301,35 @@
     
     /* Mobil responsive */
     @media (max-width: 600px) {
-      /* Üst buton tam satır, alttaki iki buton yan yana */
-      .buy-actions {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        align-items: stretch;
-      }
-      #buyBtn { grid-column: 1 / -1; }
-      #altPaymentBtn, #downloadPreviewBtn { grid-column: auto; }
-
+      /* Satın alma düzeni mobilde de flex kalsın */
+      .buy-actions { display: flex !important; }
       .btn.primary-btn,
       .btn.secondary-btn {
         width: 100%;
         min-width: auto;
-        padding: 10px 12px;
-        font-size: 12px;
-        box-shadow: 0 3px 10px rgba(0,191,99,0.12);
+        padding: 8px 10px;
+        font-size: 11px;
+        line-height: 1.1;
+        box-shadow: 0 2px 8px rgba(0,191,99,0.10);
+      }
+      .buy-actions .btn.primary-btn,
+      .buy-actions .btn.secondary-btn {
+        min-width: 0 !important;
+        flex: 1 1 100% !important;
       }
       .btn.primary-btn {
         flex-direction: row;
+        gap: 6px;
       }
       .btn.primary-btn .btn-subtitle {
         display: none;
       }
+      .buy-actions .btn.primary-btn { flex: 1 1 auto; }
+      .buy-actions .btn.secondary-btn { flex: 1 1 auto; }
+      .buy-actions { gap: 8px; }
+      /* Payment method icons smaller on mobile */
+      .payment-icons img { height: 34px !important; }
+      .payment-icons { gap: 8px; }
     }
     
     /* Çok küçük ekranlar için daha kompakt butonlar */
@@ -419,6 +429,7 @@
         font-size: 22px;
       }
     }
+    
 
     /* ACCORDION */
     .accordion { border-top: 1px solid rgba(255,255,255,0.05); }
@@ -670,6 +681,7 @@
       font-size: 10px;
       color: var(--muted);
     }
+    .payment-icon img { border-radius: 6px; }
     
     /* Cart notification */
     .cart-notification {
@@ -797,13 +809,21 @@
             <div class="buy-actions" aria-hidden="false">
               <!-- Ana Satın Alma Butonu -->
               <a id="buyBtn" class="btn primary-btn"
-                href="https://testingin1day.ikas.shop" 
-                target="_blank"
+                href="https://testingin1day.ikas.shop/kill-all-bugs---software-testing--learn-in-1-day" 
                 aria-label="Buy now via IKAS"
               >
                 <span>Buy now via ⚡ IKAS</span>
                 <span class="btn-subtitle">we suggest this</span>
               </a>
+          <!-- Shopier Satın Alma Butonu -->
+          <a id="buyBtnShopier" class="btn primary-btn"
+            href="https://www.shopier.com/testingin1day/40477850"
+            aria-label="Buy now via Shopier"
+          >
+            <span>Buy now via 🛒 Shopier</span>
+            <span class="btn-subtitle">we suggest this</span>
+          </a>
+          <div class="btn-break"></div>
               
               <!-- Alternatif Ödeme Butonu -->
               <a id="altPaymentBtn" class="btn secondary-btn"
@@ -812,6 +832,16 @@
               >
                 Other Payment Methods
               </a>
+          <div class="btn-break"></div>
+          
+          <!-- Kupon Butonu -->
+          <a id="promoBtn" class="btn secondary-btn"
+            href="#"
+            aria-label="Redeem your promo code"
+          >
+            Enjoy your extra discount<span class="countdown-labeltext">(Limited)</span>
+          </a>
+          <div class="btn-break"></div>
               
               <!-- Önizleme İndirme Butonu -->
               <a id="downloadPreviewBtn" class="btn secondary-btn"
@@ -1034,6 +1064,102 @@
                 “I needed to learn testing principles to improve my code quality. This book was exactly what I was looking for—I understood everything through practical examples.”
               </div>
             </div>
+            <div class="testimonial">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">M</div>
+                <div>
+                  <div class="testimonial-name">Mertcan D.</div>
+                  <div class="testimonial-role">QA Engineer</div>
+                </div>
+              </div>
+              <div class="testimonial-text">
+                “STLC, test plan ve test case bölümleri direkt işe yaradı. Takıma onboarding sürecini kısalttık. Fiyat/performans 10/10.”
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">S</div>
+                <div>
+                  <div class="testimonial-name">Sarah L.</div>
+                  <div class="testimonial-role">Product Manager</div>
+                </div>
+              </div>
+              <div class="testimonial-text">
+                “Short, actionable and surprisingly comprehensive. I shared the checklists with my team; our releases are smoother now.”
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">B</div>
+                <div>
+                  <div class="testimonial-name">Barış T.</div>
+                  <div class="testimonial-role">Mobile Developer</div>
+                </div>
+              </div>
+              <div class="testimonial-text">
+                “Sınır değer analizi ve test teknikleri kısmı, bug’ları çok daha erken yakalamamı sağladı. Tavsiye ederim.”
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">N</div>
+                <div>
+                  <div class="testimonial-name">Natalie P.</div>
+                  <div class="testimonial-role">Automation Tester</div>
+                </div>
+              </div>
+              <div class="testimonial-text">
+                “Great primer for juniors and a refresher for seniors. The interview Q&A section alone is worth the price.”
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">E</div>
+                <div>
+                  <div class="testimonial-name">Emre Ç.</div>
+                  <div class="testimonial-role">Backend Developer</div>
+                </div>
+              </div>
+              <div class="testimonial-text">
+                “Test mantığını geliştiricinin dilinde anlatmış. Kod kalitem bariz arttı, PR yorumları azaldı.”
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">J</div>
+                <div>
+                  <div class="testimonial-name">Julia H.</div>
+                  <div class="testimonial-role">SDET</div>
+                </div>
+              </div>
+              <div class="testimonial-text">
+                “Loved the concise format. I used the templates to bootstrap our test documentation in a new project.”
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">O</div>
+                <div>
+                  <div class="testimonial-name">Onur A.</div>
+                  <div class="testimonial-role">QA Lead</div>
+                </div>
+              </div>
+              <div class="testimonial-text">
+                “Takım içi eğitimde kaynak olarak kullandık. Yeni başlayanlar 1 haftada tempo yakaladı. Net, anlaşılır, pratik.”
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">D</div>
+                <div>
+                  <div class="testimonial-name">Daniel S.</div>
+                  <div class="testimonial-role">DevOps Engineer</div>
+                </div>
+              </div>
+              <div class="testimonial-text">
+                “CI pipeline’ına ufak test adımları eklemem için fikir verdi. Risk bazlı yaklaşım çok iyi özetlenmiş.”
+              </div>
+            </div>
           </div>
         </article>
 
@@ -1059,15 +1185,7 @@
   </div>
 </div>
 
-<div class="faq-item">
-  <div class="faq-q">
-    <div>What payment methods do you accept?</div>
-    <div class="muted">+</div>
-  </div>
-  <div class="faq-a">
-    Currently, we accept payments via Wise, Metamask USDT, Papara (Remitly), and İkas. Very soon, we will integrate Iyzico virtual POS as well. For now, our primary recommendation is to use the link through İkas, which provides an instant and secure way to receive the book.
-  </div>
-</div>
+ 
           <!-- Diğer SSS'ler... -->
         </article>
       </section>
@@ -1080,7 +1198,7 @@
           <div style="color:var(--muted);font-size:13px">You save $11 (52% off) •	Limited time offer. Instant PDF download after payment.</div>
 
           <div style="display:flex;gap:8px;margin-top:8px">
-            <a class="btn" href="https://testingin1day.ikas.shop" target="_blank" id="buyNowSidebar">
+            <a class="btn" href="https://testingin1day.ikas.shop/kill-all-bugs---software-testing--learn-in-1-day" target="_blank" id="buyNowSidebar">
              
               Buy Now & Dive into Testing Immediately
             </a>
@@ -1105,6 +1223,13 @@
     <div style="font-size: 10px; color: #00bf63; font-weight: bold; margin-top: 2px;">(we suggest)</div>
   </div>
 
+  <div style="text-align: center;">
+    <div class="payment-icon">
+      <img src="/assets/shopier.png" alt="Shopier" style="height: 50px;">
+    </div>
+    <div style="font-size: 10px; color: #00bf63; font-weight: bold; margin-top: 2px;">(we suggest)</div>
+  </div>
+
   <div class="payment-icon" style="text-align: center;">
     <img src="assets/wise.png" alt="WISE" style="height: 50px;">
   </div>
@@ -1115,15 +1240,6 @@
 
   <div class="payment-icon" style="text-align: center;">
     <img src="/assets/remitly.png" alt="PAPARA (REMITLY)" style="height: 50px;">
-  </div>
-
-
-
-  <div style="text-align: center;">
-    <div class="payment-icon">
-      <img src="/assets/iyzico.png" alt="İYZICO" style="height: 50px;">
-    </div>
-    <div style="font-size: 10px; color: #00bf63; font-weight: bold; margin-top: 2px;">(coming soon)</div>
   </div>
 
 </div>
@@ -1145,6 +1261,11 @@
   <div id="emailMsg" style="margin-top:8px;color:#b9d4ff;font-size:13px;display:none"></div>
 </div>
 
+        <!-- Podcast Embed inside sidebar -->
+        <div style="margin-top:16px; display:flex; flex-direction:column; gap:10px">
+          <div style="font-weight:300; font-size:13px; color:#ffffff">Don't forget to follow our show</div>
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/0jLBnYYl9r2v9BQrmjVDeU?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
         
       </aside>
     </main>
@@ -1154,7 +1275,6 @@
     <span class="footer-line">Made with ❤️ by CTSS Academy</span>
     <span class="footer-line">© <span id="currentYear"></span></span>
     <span class="footer-line">ISBN: 978-625-00-3271-8</span>
-    <span class="footer-line">Payment secured by Iyzico (<span style="color:#00bf63;">coming soon</span>)</span>
   </div>
   <br><br>
   <strong>Don't forget to listen to our industry's most popular technology and software education podcast</strong>  
@@ -1188,6 +1308,19 @@
       <path d="M9 12L11 14L15 10M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <span>Ödeme bilgileri e-posta ile gönderilecektir! 📩</span>
+  </div>
+  
+  <!-- Modal -->
+  <div id="globalModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter: blur(2px); z-index:2000; align-items:center; justify-content:center;">
+    <div id="globalModalContent" style="background:#101010; border:1px solid rgba(255,255,255,0.08); width:95%; max-width:860px; border-radius:10px; box-shadow: var(--shadow); overflow:hidden;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.06);">
+        <div id="globalModalTitle" style="font-weight:800; color:#fff;">Checkout</div>
+        <button id="globalModalClose" aria-label="Close" style="background:transparent; color:#fff; border:none; font-size:20px; cursor:pointer;">✕</button>
+      </div>
+      <div id="globalModalBody" style="background:#0d0d0d; position:relative;">
+        <!-- Dynamic -->
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1374,6 +1507,40 @@ function setupAccordions() {
     });
       document.getElementById("currentYear").textContent = new Date().getFullYear();
 
+      // Testimonials shuffle: kartları her yüklemede rastgele sırala
+      (function shuffleTestimonials(){
+        const container = document.querySelector('.testimonials');
+        if (!container) return;
+        const items = Array.from(container.children);
+        for (let i = items.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [items[i], items[j]] = [items[j], items[i]];
+        }
+        items.forEach(el => container.appendChild(el));
+      })();
+      
+      // Show only 2 testimonials and rotate every 5 seconds
+      (function rotateTwoTestimonials(){
+        const container = document.querySelector('.testimonials');
+        if (!container) return;
+        const cards = Array.from(container.children);
+        if (cards.length <= 2) return;
+        function showRandom() {
+          const isNarrow = window.innerWidth <= 600;
+          const count = isNarrow ? 1 : 2;
+          // hide all
+          cards.forEach(c => { c.style.display = 'none'; });
+          // pick distinct indices
+          const chosen = new Set();
+          while (chosen.size < Math.min(count, cards.length)) {
+            chosen.add(Math.floor(Math.random() * cards.length));
+          }
+          chosen.forEach(idx => { cards[idx].style.display = ''; });
+        }
+        showRandom();
+        setInterval(showRandom, 5000);
+        window.addEventListener('resize', showRandom);
+      })();
 
       document.getElementById('altPaymentBtn').addEventListener('click', function(e) {
   e.preventDefault();
@@ -1393,6 +1560,130 @@ function setupAccordions() {
     button.style.color = '#ffffff';
   }
 });
+    
+    // ---- Modal helpers ----
+    function openModalWithIframe(title, src) {
+      const modal = document.getElementById('globalModal');
+      const titleEl = document.getElementById('globalModalTitle');
+      const body = document.getElementById('globalModalBody');
+      titleEl.textContent = title || 'Checkout';
+      body.innerHTML = '<iframe src="" title="Checkout" style="width:100%; height:75vh; border:0; background:#fff; border-top:1px solid #111;"></iframe>';
+      const iframe = body.querySelector('iframe');
+      iframe.src = src;
+      modal.style.display = 'flex';
+    }
+    function openModalWithHtml(title, html) {
+      const modal = document.getElementById('globalModal');
+      const titleEl = document.getElementById('globalModalTitle');
+      const body = document.getElementById('globalModalBody');
+      titleEl.textContent = title || 'Info';
+      body.innerHTML = html;
+      modal.style.display = 'flex';
+    }
+    // Simple confetti burst
+    function triggerConfetti(durationMs = 1200, count = 120) {
+      const canvas = document.createElement('canvas');
+      canvas.style.position = 'fixed';
+      canvas.style.inset = '0';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '3000';
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      const onResize = () => resize();
+      window.addEventListener('resize', onResize);
+      const colors = ['#ffd740','#00bf63','#ffffff','#00e676','#ffe57f'];
+      const particles = Array.from({length: count}).map(() => ({
+        x: Math.random()*canvas.width,
+        y: -20 - Math.random()*40,
+        size: 4 + Math.random()*4,
+        color: colors[Math.floor(Math.random()*colors.length)],
+        vx: -2 + Math.random()*4,
+        vy: 3 + Math.random()*3,
+        rot: Math.random()*Math.PI,
+        vr: -0.2 + Math.random()*0.4
+      }));
+      let start = performance.now();
+      function tick(now) {
+        const t = now - start;
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.05;
+          p.rot += p.vr;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+          ctx.restore();
+        });
+        if (t < durationMs) {
+          requestAnimationFrame(tick);
+        } else {
+          window.removeEventListener('resize', onResize);
+          canvas.remove();
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+    function closeModal() {
+      const modal = document.getElementById('globalModal');
+      const body = document.getElementById('globalModalBody');
+      body.innerHTML = '';
+      modal.style.display = 'none';
+    }
+    document.getElementById('globalModalClose').addEventListener('click', closeModal);
+    document.getElementById('globalModal').addEventListener('click', (e) => {
+      if (e.target.id === 'globalModal') closeModal();
+    });
+    
+    // ---- Link modalization ----
+    const ikasUrl = 'https://testingin1day.ikas.shop/kill-all-bugs---software-testing--learn-in-1-day';
+    const shopierUrl = 'https://www.shopier.com/testingin1day/40477850';
+    const buyBtn = document.getElementById('buyBtn');
+    const buyBtnShopier = document.getElementById('buyBtnShopier');
+    const buyNowSidebar = document.getElementById('buyNowSidebar');
+    if (buyBtn) {
+      buyBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openModalWithIframe('IKAS Checkout', ikasUrl);
+      });
+    }
+    if (buyBtnShopier) {
+      buyBtnShopier.addEventListener('click', function(e) {
+        e.preventDefault();
+        openModalWithIframe('Shopier Checkout', shopierUrl);
+      });
+    }
+    if (buyNowSidebar) {
+      buyNowSidebar.removeAttribute('target');
+      buyNowSidebar.addEventListener('click', function(e) {
+        e.preventDefault();
+        openModalWithIframe('IKAS Checkout', ikasUrl);
+      });
+    }
+    
+    // ---- Promo code button + FOMO counter ----
+    const promoBtn = document.getElementById('promoBtn');
+    if (promoBtn) {
+      promoBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        triggerConfetti();
+        openModalWithHtml('Promo Code', `
+          <div style="padding:22px; text-align:center;">
+            <div style="font-size:14px; color:#cfcfcf; margin-bottom:8px;">Use this code at checkout</div>
+            <div style="font-size:28px; font-weight:900; letter-spacing:2px; color:#00bf63; background:rgba(0,191,99,0.12); display:inline-block; padding:10px 16px; border-radius:8px; border:1px dashed #00bf63;">CTSS25</div>
+            <div style="margin-top:10px; font-size:12px; color:#aaa;">Limited availability • Expires soon</div>
+          </div>
+        `);
+      });
+    }
   </script>
 </body>
 </html>
